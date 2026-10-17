@@ -1,0 +1,88 @@
+{
+ "text": {},
+ "img": {},
+ "site": {
+  "phone": "+91 91672 55863",
+  "whatsapp": "919167255863",
+  "email": "sajanbranding@gmail.com",
+  "address": "Sr no.103/2, Nr Sadguru Oil Mill, M no.0267, opp. Road Hande Lawns, Autadwadi Handewadi, Handewadi, Pune, Maharashtra 412308"
+ },
+ "services": [
+  "Indoor Branding",
+  "Outdoor Branding",
+  "Bus Branding",
+  "Office Branding",
+  "Sports Branding",
+  "Airport Branding",
+  "Sunboard",
+  "Art Festival",
+  "Car Branding"
+ ],
+ "categories": [
+  "Indoor/Outdoor Branding",
+  "Office Branding",
+  "Sports Branding",
+  "Sunboard"
+ ],
+ "portfolio": [
+  {
+   "c": "Indoor/Outdoor Branding",
+   "t": "img",
+   "src": "images/indoor-wall-branding-service.jpg"
+  },
+  {
+   "c": "Indoor/Outdoor Branding",
+   "t": "img",
+   "src": "images/office.webp"
+  },
+  {
+   "c": "Office Branding",
+   "t": "img",
+   "src": "images/corporate-office-branding.webp"
+  },
+  {
+   "c": "Sports Branding",
+   "t": "video",
+   "src": "images/SPORTS_BRANDING.mp4"
+  },
+  {
+   "c": "Sunboard",
+   "t": "img",
+   "src": "images/SUNBOARD_BRANDING.webp"
+  }
+ ],
+ "team": [
+  {
+   "name": "Abid Sajan",
+   "role": "Founder",
+   "img": "images/abid.jpg"
+  },
+  {
+   "name": "Shoaib Siddiqui",
+   "role": "Co-Founder",
+   "img": "images/sohebsiddiqui.jpg"
+  },
+  {
+   "name": "Akash Kamble",
+   "role": "Production Head",
+   "img": "images/akash.jpg"
+  },
+  {
+   "name": "Meraj Ansari",
+   "role": "Head/designer",
+   "img": "images/a5284267-9235-4316-9a23-b15791-mvcni4d8.webp"
+  },
+  {
+   "name": "Jahangeer Ansari",
+   "role": "Graphic designer",
+   "img": "images/jahangeer.jpg"
+  }
+ ],
+ "theme": {
+  "ac": "#393185",
+  "acd": "#7d72e6"
+ },
+ "hidden": [],
+ "announce": "",
+ "seo": {}
+}
