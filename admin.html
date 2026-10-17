@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin | Sajan Branding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--tx:#15151a;--mu:#62626e;--ac:#393185;--bd:#e4e4ea;--er:#c62828;--ok:#15803d}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0e12;--card:#15151b;--tx:#f2f2f5;--mu:#a0a0ad;--ac:#8a80ee;--bd:#26262f;--er:#ef5350;--ok:#4ade80}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Plus Jakarta Sans",system-ui,sans-serif;margin:0}
+.mu{color:var(--mu)}.er{color:var(--er)}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--ac);outline-offset:1px}
+label{display:block;margin-top:12px;font-weight:600;font-size:13px}label>input,label>select,label>textarea{margin-top:5px;font-weight:400}
+.b{border:1.5px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 14px;border-radius:999px;font:inherit;font-weight:600;font-size:13px;cursor:pointer}
+.b:hover{border-color:var(--ac);color:var(--ac)}
+.b.p{background:var(--ac);border-color:var(--ac);color:#fff}.b.p:hover{opacity:.9;color:#fff}
+.b.p:disabled{opacity:.45;cursor:not-allowed}
+.b.dg:hover{border-color:var(--er);color:var(--er)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px;margin-bottom:16px}
+.card h2{font-size:18px;margin-bottom:4px}
+#login{min-height:100vh;display:grid;place-items:center;padding:20px}
+#login .card{width:100%;max-width:420px;padding:28px}
+#login h1{font-size:24px}
+.ck{display:flex;gap:8px;align-items:center;font-weight:500}.ck input{width:auto;margin:0}
+details{margin-top:14px;font-size:13px;color:var(--mu)}details ol{padding-left:18px}
+#app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+aside{background:var(--card);border-right:1px solid var(--bd);padding:18px 12px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px}
+aside h1{font-size:18px;padding:4px 10px 14px}
+aside .n{text-align:left;border:0;background:none;color:var(--tx);font:inherit;font-weight:600;padding:10px 12px;border-radius:10px;cursor:pointer}
+aside .n:hover{background:var(--bg)}aside .n.on{background:var(--ac);color:#fff}
+aside .sp{flex:1}
+main{padding:0 24px 80px;min-width:0}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;align-items:center;gap:10px;padding:14px 0;flex-wrap:wrap}
+.top h2{font-size:22px;margin-right:auto}
+#st{font-size:13px;color:var(--mu)}#st.d{color:var(--er);font-weight:600}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.it{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.it img,.it video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#111}
+.it .bd{padding:12px;display:grid;gap:8px;font-size:13px}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.pv img{max-width:280px;width:100%;border-radius:12px;display:block;margin:12px 0;border:1px solid var(--bd)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+iframe{width:100%;height:68vh;border:1px solid var(--bd);border-radius:14px;background:#fff;display:block;margin:0 auto}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(20px);background:var(--tx);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:20;max-width:92vw}
+#toast.on{opacity:1;transform:translateX(-50%)}#toast.er{background:var(--er);color:#fff}
+@media(max-width:760px){
+  #app{grid-template-columns:1fr}
+  aside{position:sticky;top:0;z-index:6;height:auto;flex-direction:row;overflow-x:auto;padding:8px;border-right:0;border-bottom:1px solid var(--bd)}
+  aside h1,aside .sp{display:none}aside .n{white-space:nowrap;padding:8px 12px}
+  main{padding:0 14px 80px}.cols{grid-template-columns:1fr}.top{top:53px}
+}
+</style>
+</head>
+<body>
+
+<div id="login"><form class="card" id="lf">
+  <h1>Sajan Branding admin</h1>
+  <p class="mu">Private dashboard. Sign in with your GitHub access token, so only you can change the website.</p>
+  <label>GitHub repository<input id="rp" placeholder="username/repository" required></label>
+  <label>Branch<input id="br" value="main" required></label>
+  <label>Access token<input id="tk" type="password" autocomplete="current-password" required></label>
+  <label class="ck"><input type="checkbox" id="rm" checked> Stay signed in on this device</label>
+  <p><button class="b p" style="width:100%;padding:12px">Sign in</button></p>
+  <p id="le" class="er" role="alert"></p>
+  <details><summary>How do I get a token?</summary><ol>
+    <li>On GitHub open Settings, Developer settings, Personal access tokens, Fine-grained tokens.</li>
+    <li>Choose Generate new token and set the expiry you want.</li>
+    <li>Under Repository access pick Only select repositories, then choose your website repository.</li>
+    <li>Under Permissions set Contents to Read and write.</li>
+    <li>Generate the token and paste it here. Don't share it with anyone.</li>
+  </ol></details>
+</form></div>
+
+<div id="app" hidden>
+  <aside id="side"></aside>
+  <main>
+    <div class="top"><h2 id="pt"></h2><span id="st">All changes published</span>
+      <button class="b" id="vw">View site</button><button class="b p" id="pub" disabled>Publish changes</button></div>
+    <div id="m"></div>
+  </main>
+</div>
+<div id="toast" role="status"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const el=(t,a={},...k)=>{const e=document.createElement(t);for(const x in a){const v=a[x];if(x==='class')e.className=v;else if(x.startsWith('on'))e[x]=v;else if(x==='value')e.value=v;else e.setAttribute(x,v)}e.append(...k.flat());return e};
+const btn=(t,f,c='')=>el('button',{type:'button',class:'b '+c,onclick:f},t);
+
+/* ---- Current site values (used until you change something) ---- */
+const DEF={
+ site:{phone:"+91 91672 55863",whatsapp:"919167255863",email:"sajanbranding@gmail.com",address:"Sr no.103/2, Nr Sadguru Oil Mill, M no.0267, opp. Road Hande Lawns, Autadwadi Handewadi, Handewadi, Pune, Maharashtra 412308"},
+ services:["Indoor Branding","Outdoor Branding","Bus Branding","Office Branding","Sports Branding","Airport Branding","Sunboard","Art Festival","Car Branding"],
+ categories:["Indoor/Outdoor Branding","Office Branding","Sports Branding","Sunboard"],
+ portfolio:[
+  {c:"Indoor/Outdoor Branding",t:"img",src:"images/indoor-wall-branding-service.jpg"},
+  {c:"Indoor/Outdoor Branding",t:"img",src:"images/office.webp"},
+  {c:"Office Branding",t:"img",src:"images/corporate-office-branding.webp"},
+  {c:"Sports Branding",t:"video",src:"images/SPORTS_BRANDING.mp4"},
+  {c:"Sunboard",t:"img",src:"images/SUNBOARD_BRANDING.webp"}],
+ team:[{name:"Abid Sajan",role:"Founder",img:"images/abid.jpg"},{name:"Shoaib Siddiqui",role:"Co-Founder",img:"images/sohebsiddiqui.jpg"},{name:"Akash Kamble",role:"Production Head",img:"images/akash.jpg"},{name:"Meraj Ansari",role:"Head/designer",img:"images/meraj.jpg"},{name:"Jahangeer Ansari",role:"Graphic designer",img:"images/jahangeer.jpg"}],
+ theme:{ac:"#393185",acd:"#7d72e6"}
+};
+/* ---- Text fields: [css selector on the site, label, flag] (a = long text, t = text after the number) ---- */
+const S=[];
+(()=>{const sv=[],wy=[],st=[];
+ for(let i=1;i<=3;i++)st.push([`#home .stats>div:nth-child(${i}) b`,`Stat ${i} number`],[`#home .stats>div:nth-child(${i}) span`,`Stat ${i} label`]);
+ for(let i=1;i<=4;i++)sv.push([`#services .card:nth-child(${i}) h3`,`Service ${i} title`],[`#services .card:nth-child(${i}) p`,`Service ${i} text`,'a']);
+ for(let i=1;i<=6;i++)wy.push([`#why .card:nth-child(${i}) h3`,`Reason ${i} title`],[`#why .card:nth-child(${i}) p`,`Reason ${i} text`,'a']);
+ S.push(['Home',[['#home .tag','Small line above headline'],['#home h1','Headline','a'],['#home .lead','Intro text','a'],['#home .row a:nth-child(1)','Button 1'],['#home .row a:nth-child(2)','Button 2'],...st]],
+ ['About',[['#about .tag','Section label'],['#about h2','Heading','a'],['#about .lead','Paragraph','a'],['#about .pill:nth-child(1)','Pill 1','t'],['#about .pill:nth-child(2)','Pill 2','t'],['#about .pill:nth-child(3)','Pill 3','t']]],
+ ['Printing services',[['#services .tag','Section label'],['#services h2','Heading','a'],...sv]],
+ ['Portfolio',[['#portfolio .tag','Section label'],['#portfolio h2','Heading']]],
+ ['Why choose us',[['#why .tag','Section label'],['#why h2','Heading'],...wy]],
+ ['Team',[['#team .tag','Section label'],['#team h2','Heading']]],
+ ['Contact',[['#contact .tag','Section label'],['#contact h2','Heading','a'],['#contact .lead','Intro text','a']]],
+ ['Footer',[['footer .fl span:nth-child(2)','Credit line']]]);
+})();
+const IMG=[['#home .hero-photo img','Home photo (round, top of the page)'],['.logo img','Logo in the header']];
+const SECS=[['about','About'],['services','Printing services'],['portfolio','Portfolio'],['why','Why choose us'],['team','Team'],['contact','Contact']];
+
+/* ---- State ---- */
+let cfg={},C={},DOC=null,dirty=false,cur='text';
+const blank=()=>({text:{},img:{},site:{},services:null,categories:null,portfolio:null,team:null,theme:{},hidden:[],announce:'',seo:{}});
+const enc=s=>btoa(unescape(encodeURIComponent(s))),dec=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,''))));
+function toast(t,keep,err){const x=$('toast');x.textContent=t;x.className='on'+(err?' er':'');clearTimeout(toast.t);if(!keep)toast.t=setTimeout(()=>x.className='',3600)}
+async function run(f){try{return await f()}catch(e){toast('Something went wrong: '+e.message,0,1)}}
+function mark(){dirty=true;$('st').textContent='Unpublished changes';$('st').className='d';$('pub').disabled=false}
+
+/* ---- GitHub ---- */
+async function gh(path,o={}){
+ const r=await fetch(`https://api.github.com/repos/${cfg.repo}/contents/${path}`+(o.m?'':`?ref=${encodeURIComponent(cfg.branch)}`),{method:o.m||'GET',headers:{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'},body:o.body&&JSON.stringify(o.body)});
+ const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.message||r.status);return j}
+async function put(path,b64,msg){let sha;try{sha=(await gh(path)).sha}catch(e){}return gh(path,{m:'PUT',body:{message:msg,content:b64,branch:cfg.branch,sha}})}
+const pick=accept=>new Promise(r=>{const i=el('input',{type:'file',accept});i.onchange=()=>r(i.files[0]||null);i.click()});
+const toB64=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result.split(',')[1]);f.readAsDataURL(b)});
+async function shrink(file){
+ if(!/^image\/(jpeg|png|webp)$/.test(file.type))return{blob:file,ext:(file.name.split('.').pop()||'bin').toLowerCase()};
+ const im=await createImageBitmap(file),s=Math.min(1,1800/Math.max(im.width,im.height)),c=document.createElement('canvas');
+ c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+ return{blob:await new Promise(r=>c.toBlob(r,'image/webp',.86)),ext:'webp'}}
+async function upload(file){
+ if(file.size>40e6)throw new Error('File is over 40 MB. Compress it and try again.');
+ toast('Uploading '+file.name+'…',true);const{blob,ext}=await shrink(file);
+ const name=file.name.replace(/\.[^.]+$/,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,30)+'-'+Date.now().toString(36)+'.'+ext;
+ await put('images/'+name,await toB64(blob),'Upload '+name);toast('Uploaded');return 'images/'+name}
+const isVid=f=>f.type.startsWith('video');
+const mv=(a,i,d)=>{const j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];mark();show(cur)};
+
+/* ---- Defaults read from your live index.html ---- */
+async function loadDoc(){try{DOC=new DOMParser().parseFromString(await (await fetch('index.html',{cache:'no-store'})).text(),'text/html')}catch(e){DOC=null}}
+function defText(sel,tail){
+ const e=DOC&&DOC.querySelector(sel);if(!e)return'';
+ if(tail){const n=e.lastChild;return n&&n.nodeType===3?n.textContent.trim():''}
+ return[...e.childNodes].map(n=>n.classList&&n.classList.contains('hl')?'[['+n.textContent+']]':n.textContent).join('').replace(/\s+/g,' ').trim()}
+
+/* ---- Panels ---- */
+const P={
+ text(m){
+  m.append(el('p',{class:'mu'},'Edit any wording on the site. Put double square brackets around words to highlight them, like [[Brands]].'));
+  S.forEach(([g,fs])=>{const box=el('section',{class:'card'},el('h2',{},g));
+   fs.forEach(([sel,lab,fl])=>{const d=defText(sel,fl==='t'),v=sel in C.text?C.text[sel]:d;
+    const inp=el(fl==='a'?'textarea':'input',{rows:3,value:v});
+    inp.oninput=()=>{inp.value===d?delete C.text[sel]:C.text[sel]=inp.value;mark()};
+    box.append(el('label',{},lab,inp))});m.append(box)})},
+ images(m){
+  IMG.forEach(([sel,lab])=>{const src=()=>C.img[sel]||(DOC&&DOC.querySelector(sel)?.getAttribute('src'))||'';
+   const im=el('img',{src:src(),alt:''});
+   m.append(el('section',{class:'card pv'},el('h2',{},lab),im,btn('Replace image',async()=>{const f=await pick('image/*');if(!f)return;const p=await run(()=>upload(f));if(!p)return;C.img[sel]=p;im.src=p;mark()})))})},
+ portfolio(m){
+  const ta=el('textarea',{rows:5,value:C.categories.join('\n')});
+  ta.onchange=()=>{C.categories=ta.value.split('\n').map(s=>s.trim()).filter(Boolean);mark();show(cur)};
+  m.append(el('section',{class:'card'},el('h2',{},'Filter buttons'),el('p',{class:'mu'},'One per line. These are the category buttons above your work.'),ta));
+  const list=el('div',{class:'g'});
+  C.portfolio.forEach((p,i)=>{
+   const th=p.t==='video'?el('video',{src:p.src,preload:'metadata',muted:''}):el('img',{src:p.src,alt:''});
+   const cs=el('select',{onchange:()=>{p.c=cs.value;mark()}});
+   [...new Set([...C.categories,p.c])].forEach(c=>cs.append(el('option',{value:c},c)));cs.value=p.c;
+   list.append(el('div',{class:'it'},th,el('div',{class:'bd'},p.t==='video'?'Video':'Image',cs,el('div',{class:'acts'},
+    btn('Replace',async()=>{const f=await pick('image/*,video/*');if(!f)return;const s=await run(()=>upload(f));if(!s)return;p.src=s;p.t=isVid(f)?'video':'img';mark();show(cur)}),
+    btn('Up',()=>mv(C.portfolio,i,-1)),btn('Down',()=>mv(C.portfolio,i,1)),
+    btn('Remove',()=>{if(confirm('Remove this from the portfolio?')){C.portfolio.splice(i,1);mark();show(cur)}},'dg')))))});
+  m.append(list,el('p',{},btn('Add image or video',async()=>{const f=await pick('image/*,video/*');if(!f)return;const s=await run(()=>upload(f));if(!s)return;C.portfolio.push({c:C.categories[0]||'',t:isVid(f)?'video':'img',src:s});mark();show(cur)},'p')))},
+ team(m){
+  const list=el('div',{class:'g'});
+  C.team.forEach((t,i)=>{
+   const im=el('img',{src:t.img,alt:''}),n=el('input',{value:t.name,'aria-label':'Name'}),r=el('input',{value:t.role,'aria-label':'Role'});
+   n.oninput=()=>{t.name=n.value;mark()};r.oninput=()=>{t.role=r.value;mark()};
+   list.append(el('div',{class:'it'},im,el('div',{class:'bd'},n,r,el('div',{class:'acts'},
+    btn('Replace photo',async()=>{const f=await pick('image/*');if(!f)return;const p=await run(()=>upload(f));if(!p)return;t.img=p;im.src=p;mark()}),
+    btn('Up',()=>mv(C.team,i,-1)),btn('Down',()=>mv(C.team,i,1)),
+    btn('Remove',()=>{if(confirm('Remove '+t.name+' from the team?')){C.team.splice(i,1);mark();show(cur)}},'dg')))))});
+  m.append(list,el('p',{},btn('Add team member',async()=>{const f=await pick('image/*');if(!f)return;const p=await run(()=>upload(f));if(!p)return;C.team.push({name:'New member',role:'Role',img:p});mark();show(cur)},'p')))},
+ details(m){
+  const box=el('section',{class:'card'},el('h2',{},'Contact details'),el('p',{class:'mu'},'Used in the contact section, the WhatsApp button and the enquiry form.'));
+  [['phone','Phone shown on the site'],['whatsapp','WhatsApp number (digits only, with country code)'],['email','Email'],['address','Address','a']].forEach(([k,l,a])=>{
+   const i=el(a?'textarea':'input',{rows:3,value:C.site[k]||''});i.oninput=()=>{C.site[k]=i.value;mark()};box.append(el('label',{},l,i))});
+  const sv=el('textarea',{rows:9,value:C.services.join('\n')});sv.oninput=()=>{C.services=sv.value.split('\n').map(s=>s.trim()).filter(Boolean);mark()};
+  m.append(box,el('section',{class:'card'},el('h2',{},'Services in the enquiry form'),el('p',{class:'mu'},'One per line. Visitors pick from this list when they send an enquiry.'),sv))},
+ look(m){
+  const col=(k,l)=>{const i=el('input',{type:'color',value:C.theme[k]||DEF.theme[k],style:'height:44px;padding:4px'});i.oninput=()=>{C.theme[k]=i.value;mark()};return el('label',{},l,i)};
+  m.append(el('section',{class:'card'},el('h2',{},'Brand colour'),el('div',{class:'cols'},col('ac','Light mode'),col('acd','Dark mode'))));
+  const an=el('input',{value:C.announce,placeholder:'For example: Diwali offer, 10% off on all flex printing'});an.oninput=()=>{C.announce=an.value;mark()};
+  m.append(el('section',{class:'card'},el('h2',{},'Announcement bar'),el('p',{class:'mu'},'Shows a coloured bar at the very top of the site. Leave empty to hide it.'),an));
+  const sc=el('section',{class:'card'},el('h2',{},'Sections on the site'),el('p',{class:'mu'},'Untick a section to hide it, and its menu link, from visitors.'));
+  SECS.forEach(([id,l])=>{const c=el('input',{type:'checkbox'});c.checked=!C.hidden.includes(id);c.onchange=()=>{C.hidden=C.hidden.filter(x=>x!==id);if(!c.checked)C.hidden.push(id);mark()};sc.append(el('label',{class:'ck'},c,l))});
+  const t=el('input',{value:C.seo.title??(DOC?DOC.title:'')}),d=el('textarea',{rows:3,value:C.seo.description??(DOC?.querySelector('meta[name=description]')?.content||'')});
+  t.oninput=()=>{C.seo.title=t.value;mark()};d.oninput=()=>{C.seo.description=d.value;mark()};
+  m.append(sc,el('section',{class:'card'},el('h2',{},'Google search listing'),el('label',{},'Page title',t),el('label',{},'Description',d)))},
+ preview(m){
+  const f=el('iframe',{src:'index.html?preview=1',title:'Site preview'});
+  const go=()=>{f.contentWindow.applyContent&&f.contentWindow.applyContent(C)};f.onload=go;
+  m.append(el('p',{class:'acts'},btn('Refresh',()=>f.contentWindow.location.reload()),btn('Phone width',()=>f.style.maxWidth='390px'),btn('Full width',()=>f.style.maxWidth='none')),f)}
+};
+const NAV=[['text','Text'],['images','Photos'],['portfolio','Portfolio'],['team','Team'],['details','Contact & services'],['look','Look & settings'],['preview','Preview']];
+function show(id){cur=id;$('pt').textContent=NAV.find(n=>n[0]===id)[1];
+ [...$('side').querySelectorAll('.n')].forEach(b=>b.classList.toggle('on',b.dataset.id===id));
+ const m=$('m');m.innerHTML='';P[id](m)}
+
+/* ---- Publish, backup, sign in ---- */
+$('pub').onclick=()=>run(async()=>{
+ $('pub').disabled=true;toast('Publishing…',true);
+ await put('content.json',enc(JSON.stringify(C,null,1)),'Update site content from admin');
+ dirty=false;$('st').textContent='All changes published';$('st').className='';
+ toast('Published. The live site updates in about a minute.')}).then(()=>{if(dirty)$('pub').disabled=false});
+$('vw').onclick=()=>window.open('index.html','_blank');
+addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+function backup(){const a=el('a',{href:URL.createObjectURL(new Blob([JSON.stringify(C,null,1)],{type:'application/json'})),download:'content-backup.json'});a.click()}
+function signOut(){localStorage.removeItem('sbAdmin');location.reload()}
+async function boot(){
+ await loadDoc();C=blank();let f;try{f=await gh('content.json')}catch(e){}
+ if(f)try{Object.assign(C,JSON.parse(dec(f.content)))}catch(e){}
+ C.site={...DEF.site,...C.site};C.theme={...DEF.theme,...C.theme};C.hidden=C.hidden||[];C.announce=C.announce||'';C.seo=C.seo||{};C.text=C.text||{};C.img=C.img||{};
+ ['services','categories','portfolio','team'].forEach(k=>C[k]=C[k]||structuredClone(DEF[k]));
+ const s=$('side');s.append(el('h1',{},'Sajan admin'));
+ NAV.forEach(([id,l])=>s.append(el('button',{class:'n','data-id':id,onclick:()=>show(id)},l)));
+ s.append(el('div',{class:'sp'}),btn('Download backup',backup),btn('Sign out',signOut));
+ $('login').hidden=true;$('app').hidden=false;show('text')}
+$('lf').onsubmit=async e=>{e.preventDefault();$('le').textContent='';
+ cfg={repo:$('rp').value.trim().replace(/^https?:\/\/github\.com\//,'').replace(/\/$/,''),branch:$('br').value.trim(),token:$('tk').value.trim()};
+ try{const r=await fetch('https://api.github.com/repos/'+cfg.repo,{headers:{Authorization:'Bearer '+cfg.token}}),j=await r.json();
+  if(!r.ok)throw new Error(r.status===404||r.status===401?'Repository or token not recognised. Check both and try again.':j.message);
+  if(j.permissions&&!j.permissions.push)throw new Error('This token can only read the repository. Give it Contents: Read and write.');
+  if($('rm').checked)localStorage.setItem('sbAdmin',JSON.stringify(cfg));await boot()}
+ catch(x){$('le').textContent=x.message}};
+(()=>{const h=location.hostname.split('.');if(h[1]==='github'){const o=h[0],r=location.pathname.split('/')[1];$('rp').value=o+'/'+(r&&r!=='admin.html'?r:o+'.github.io')}
+ try{const s=JSON.parse(localStorage.getItem('sbAdmin')||'null');if(s){cfg=s;$('rp').value=s.repo;$('br').value=s.branch;boot().catch(()=>{$('app').hidden=true;$('login').hidden=false})}}catch(e){}})();
+</script>
+</body>
+</html>
