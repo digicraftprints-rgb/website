@@ -1,6 +1,10 @@
 {
- "text": {},
- "img": {},
+ "text": {
+  "#team h2": "Meet the People behind the work."
+ },
+ "img": {
+  ".logo img": "images/logo-mvdfgotv.webp"
+ },
  "site": {
   "phone": "+91 91672 55863",
   "whatsapp": "919167255863",
@@ -76,11 +80,16 @@
    "name": "Jahangeer Ansari",
    "role": "Graphic designer",
    "img": "images/jahangeer.jpg"
+  },
+  {
+   "name": "Sameer Mansoori",
+   "role": "Graphic desinger",
+   "img": "images/photo-3-mvdf8hv2.webp"
   }
  ],
  "theme": {
-  "ac": "#393185",
-  "acd": "#7d72e6"
+  "ac": "#3331af",
+  "acd": "#34b1fe"
  },
  "hidden": [],
  "announce": "",
