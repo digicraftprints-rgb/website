@@ -78,13 +78,13 @@
   },
   {
    "name": "Jahangeer Ansari",
-   "role": "Graphic designer / Video / dev.",
+   "role": "Graphic designer / Video / <dev.>",
    "img": "images/image-removebg-preview-mvdg4c0g.webp"
   }
  ],
  "theme": {
   "ac": "#393185",
-  "acd": "#34b1fe"
+  "acd": "#6bffba"
  },
  "hidden": [],
  "announce": "",
